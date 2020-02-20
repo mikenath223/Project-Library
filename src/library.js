@@ -1,4 +1,5 @@
 const myLibrary = [];
+const getLibrary = document.querySelector('.my-books');
 
 function Book(title, author, pages, status) {
   this.title = title;
@@ -14,3 +15,22 @@ function addBookToLibrary(title, author, pages, status) {
 }
 
 addBookToLibrary('Gulliver Travels', 'Chistopher Nolan', 50, true);
+addBookToLibrary('Gulliver Travels II', 'Chistopher Nolan', 500, false);
+addBookToLibrary('Gul Plays', 'Chisan Lopez', 150, true);
+
+
+
+function render() {
+
+    myLibrary.forEach(item =>  {
+      
+             
+        let element = document.createElement('h1');
+        element.innerHTML = item.info();
+        getLibrary.appendChild(element)
+        
+    }
+    )
+}
+
+render();
