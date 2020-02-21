@@ -37,9 +37,9 @@ function displayLibrary() {
     const pages = document.querySelector('#pages').value;
     const readElem = document.querySelectorAll('input[type="radio"]');
     let readStatus;
-    readElem.forEach((elem, i) => {
-      if (readElem[i].checked) {
-        readStatus = readElem[i].value;
+    readElem.forEach((elem) => {
+      if (elem.checked) {
+        readStatus = elem.value;
       }
     });
 
