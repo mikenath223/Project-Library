@@ -19,6 +19,12 @@ addBookToLibrary('Gulliver Travels II', 'Chistopher Nolan', 500, false);
 addBookToLibrary('Gul Plays', 'Chisan Lopez', 150, true);
 
 
+let removeButtons = (elem) => {
+  elem.addEventListener('click', function(e){
+  console.log(e.target.dataset.index)
+})}
+
+
 function render() {
 
   const len = myLibrary.length;
@@ -33,21 +39,11 @@ function render() {
   parents.appendChild(element);
   parents.appendChild(button);
   button.dataset.index =  len - 1;
-
+  button.classList.add('removeBook');
+  button.addEventListener('click', removeButtons(button));
 }
 
 render();
-
-
-const removeButtons = document.querySelectorAll('.book>button');
-
-removeButtons.forEach(e => e.addEventListener('click', function(e){
-
-  console.log(e.target.dataset.index)
-
-
-
-}));
 
 
 function displayLibrary() {
