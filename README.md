@@ -7,7 +7,7 @@
 <br />
 <p align="center">
   <a href="#">
-    <img src="src/img/microverse-logo.jpg" alt="Logo" width="80" height="80">
+    <img src="src/img/microverselogo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Library Project //
@@ -32,9 +32,13 @@
 
 This is a Library App where you can display, add & remove your books. You can use this to keep track of your reading list, and check all your completed books.
 
+<!-- RUN THIS APP -->
+
 ## Installation
 
 Download or clone this [repo here](https://github.com/mikenath223/Project-Library) and open the 'index.html. file.
+
+<!-- BUILT WITH-->
 
 ### Built With
 
@@ -53,9 +57,9 @@ This project was built with these techologies:
 - Github: [@t](https://github.com/mikenath223)
 - Twitter: [@](https://twitter.com/)
 - Linkedin: [](https://www.linkedin.com/in/)
+<br />
+<br />
 
-<br />
-<br />
 **Alejandro Andres**
 
 - Github: [@alexawesomecode](https://github.com/alexawesomecode)
