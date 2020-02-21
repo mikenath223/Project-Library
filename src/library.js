@@ -20,13 +20,35 @@ addBookToLibrary('Gul Plays', 'Chisan Lopez', 150, true);
 
 
 function render() {
+
   const len = myLibrary.length;
+  const parents = document.createElement('div')
   const element = document.createElement('h1');
+  const button = document.createElement('button');
+  button.innerHTML = 'Remove'
+  button.setAttribute('type', 'submit')
+  parents.classList.add('book')
   element.innerHTML = myLibrary[len - 1].info();
-  getLibrary.appendChild(element);
+  getLibrary.appendChild(parents);
+  parents.appendChild(element);
+  parents.appendChild(button);
+  button.dataset.index =  len - 1;
+
 }
 
 render();
+
+
+const removeButtons = document.querySelectorAll('.book>button');
+
+removeButtons.forEach(e => e.addEventListener('click', function(e){
+
+  console.log(e.target.dataset.index)
+
+
+
+}));
+
 
 function displayLibrary() {
   const submitBut = document.getElementById('submit');
