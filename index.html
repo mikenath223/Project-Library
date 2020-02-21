@@ -10,23 +10,21 @@
 </head>
 <body>
   <div class="my-books"> </div>
-  <form action="" method="post">
+  <form action="" method="post" id="form">
 
     <p>Create a new Book: </p>
     <label for="title"> Title: </label>
-    <input type="text" name="title" id="title"> </input> 
+    <input type="text" name="title" id="title" required> 
     <label for="author"> Author: </label>
-    <input type="text" name="author" id="author"> </input>
+    <input type="text" name="author" id="author" class="field" required>
     <label for="pages"> Pages: </label>
-    <input type="number" name="pages" id="pages"> </input>
-    <label for="read"> Read?: </label>
-    
+    <input type="number" name="pages" id="pages" class="field" required>
+    <p> Have you ead this book? </p>
     <label for="read">Yes</label>
-    <input type="radio" name="read" id="yes">
+    <input type="radio" name="read" id="yes" value="All done">
     <label for="read">No</label>
-    <input type="radio" name="read" id="no" checked>
-    
-    <button class="new-book"> Create</button>
+    <input type="radio" name="read" id="no" checked value="Not Read">
+    <button type="submit" id="submit">Add book to library</button>
   </form>
 
   <script src="src/library.js"> </script>  
