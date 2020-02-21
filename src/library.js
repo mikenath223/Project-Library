@@ -5,16 +5,16 @@ const appendChild = (parent, child) => { return parent.appendChild(child)};
 
 const getLibrary = selectQuery('.my-books');
 
-function Book(title, author, pages, status) {
+function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = status;
-  this.info = () => `Book Title: ${title}, Author: ${author}, Pages: ${pages}, Book Read?: ${status}.`;
+  this.readToggle = (stats) => this.read = stats;
+  this.info = () => `Book Title: ${title}, Author: ${author}, Pages: ${pages}`;
 }
 
-function addBookToLibrary(title, author, pages, status) {
-  const newBook = new Book(title, author, pages, status);
+function addBookToLibrary(title, author, pages) {
+  const newBook = new Book(title, author, pages);
   myLibrary.push(newBook);
 }
 
@@ -36,7 +36,9 @@ function render() {
   const element = createElement('h1');
   const button = createElement('button');
   const readButton = createElement('button');
-  readButton.innerHTML = 'Status'
+  const readStatus = createElement('h3');
+  readStatus.classList.add('read-status');
+  readButton.innerHTML = 'Toggle Read Status';
   readButton.classList.add('.status-button')
   button.innerHTML = 'Remove'
   button.setAttribute('type', 'submit')
@@ -45,6 +47,7 @@ function render() {
   appendChild(parents, element);
   appendChild(parents, button);
   appendChild(parents, readButton);
+  appendChild(parents, readStatus);
     if (len >= 1) {
     element.innerHTML = myLibrary[len - 1].info()
     readButton.dataset.index = len - 1;
@@ -53,15 +56,19 @@ function render() {
   }
   button.classList.add('removeBook');
   button.addEventListener('click', removeBooks(button));
-  readButton.addEventListener('click', updateStatus(readButton))
+  readButton.addEventListener('click', updateStatus)
 }
 
+const readStatus = ['Book Completely Read! 😍', 'Book uncompleted 😒'];
+let chkStatsLen = 0;
 function updateStatus(e) {
-
-  const removeIndex =  e.target.dataset.index;
-
-
-
+  const bookIndex =  e.target.dataset.index;
+  if (chkStatsLen > 1) {chkStatsLen = 0}
+  const book = myLibrary[bookIndex];
+  book.readToggle(readStatus[chkStatsLen]);
+  chkStatsLen++;
+  const readStats = selectQuery('.read-status');
+  readStats.innerHTML = book.read;
 }
 
 (function(){
@@ -79,13 +86,6 @@ function displayLibrary() {
     const title = selectQuery('#title').value;
     const author = selectQuery('#author').value;
     const pages = selectQuery('#pages').value;
-    const readElem = document.querySelectorAll('input[type="radio"]');
-    let readStatus;
-    readElem.forEach((elem) => {
-      if (elem.checked) {
-        readStatus = elem.value;
-      }
-    });
 
     const checkLen = (inputVal) => {
       if (inputVal.length >= 1) {
@@ -96,7 +96,7 @@ function displayLibrary() {
 
     function callRenderOnValid() {
       if (checkLen(title) && checkLen(author) && checkLen(pages)) {
-        addBookToLibrary(title, author, pages, readStatus);
+        addBookToLibrary(title, author, pages);
         render();
       }
     }
