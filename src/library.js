@@ -35,21 +35,34 @@ function render() {
   const parents = createElement('div');
   const element = createElement('h1');
   const button = createElement('button');
+  const readButton = createElement('button');
+  readButton.innerHTML = 'Status'
+  readButton.classList.add('.status-button')
   button.innerHTML = 'Remove'
   button.setAttribute('type', 'submit')
   parents.classList.add('book');
   appendChild(getLibrary, parents);
   appendChild(parents, element);
   appendChild(parents, button);
-  if (len >= 1) {
+  appendChild(parents, readButton);
+    if (len >= 1) {
     element.innerHTML = myLibrary[len - 1].info()
+    readButton.dataset.index = len - 1;
     button.dataset.index =  len - 1;
     parents.dataset.index =  `book${len - 1}`;
   }
   button.classList.add('removeBook');
   button.addEventListener('click', removeBooks(button));
+  readButton.addEventListener('click', updateStatus(readButton))
 }
 
+function updateStatus(e) {
+
+  const removeIndex =  e.target.dataset.index;
+
+
+
+}
 
 (function(){
   const createBookButton = selectQuery('.createBookButton');
