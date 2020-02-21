@@ -3,6 +3,15 @@ linters:
   eslint:
     # indicate where is the config file for stylelint
     config: './.eslintrc.json'
+  stylelint:
+    config: 'stylelint.config.js'
+    fixer: true
+  files:
+    ignore:
+        - 'style/Normalize.css'
+  fixers:
+    enable: true
+
 
 # add the files here you want to be ignored by stylelint
 files:

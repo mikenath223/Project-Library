@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://www.microverse.org/">
-    <img src="src/img/microverse.png" alt="Logo" width="80" height="80">
+    <img src="src/asset/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">
@@ -30,7 +30,7 @@
 ## Project A Library App
 This is a Library App where you can display, add and remove your books. You can use this to keep track of your reading list, and check all your completed books.
 
-<img src="src/img/screenshot.png" alt="screenshot" width="800" height="500">
+<img src="src/asset/library-shot.png" alt="screenshot" width="800" height="500">
 
 
 # Validations
