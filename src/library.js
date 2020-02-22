@@ -13,12 +13,6 @@ function Book(title, author, pages) {
   this.info = () => `Book Title: ${title}, Author: ${author}, Pages: ${pages}`;
 }
 
-function addBookToLibrary(title, author, pages) {
-  const newBook = new Book(title, author, pages);
-  myLibrary.push(newBook);
-}
-
-
 const removeBooks = (elem) => {
   elem.addEventListener('click', (e) => {
     const bookIndex = e.target.dataset.index;
@@ -27,7 +21,6 @@ const removeBooks = (elem) => {
     document.querySelector('.my-books').removeChild(book);
   });
 };
-
 
 function render() {
   const len = myLibrary.length;
@@ -72,16 +65,7 @@ function render() {
 }
 
 
-function formDisplay() {
-  const createBookButton = selectQuery('.createBookButton');
-  const addBookForm = selectQuery('.createBookForm');
-  createBookButton.addEventListener('click', () => {
-    addBookForm.classList.toggle('displayForm');
-  });
-}
-formDisplay();
-
-function displayLibrary() {
+function addBookToLibrary() {
   const submitBut = document.getElementById('submit');
   document.getElementById('form').onsubmit = (e) => e.preventDefault();
   submitBut.addEventListener('click', () => {
@@ -96,18 +80,21 @@ function displayLibrary() {
       return false;
     };
 
-    function callRenderOnValid() {
-      if (checkLen(title.value) && checkLen(author.value) && checkLen(pages.value)) {
-        addBookToLibrary(title.value, author.value, pages.value);
-        render();
-        title.value = '';
-        author.value = '';
-        pages.value = '';
-      }
+    if (checkLen(title.value) && checkLen(author.value) && checkLen(pages.value)) {
+      const newBook = new Book(title.value, author.value, pages.value);
+      myLibrary.push(newBook);
+      render();
+      title.value = '';
+      author.value = '';
+      pages.value = '';
     }
-
-    callRenderOnValid();
   });
 }
+addBookToLibrary();
 
-displayLibrary();
+
+const createBookButton = selectQuery('.createBookButton');
+const addBookForm = selectQuery('.createBookForm');
+createBookButton.addEventListener('click', () => {
+  addBookForm.classList.toggle('displayForm');
+});
