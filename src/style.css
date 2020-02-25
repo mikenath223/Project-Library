@@ -1,6 +1,4 @@
 html {
-  background: url();
-  height: 100vh;
   width: 100vw;
 }
 
@@ -29,8 +27,39 @@ body {
   background: url(../src/asset/clip-education.png) center no-repeat;
 }
 
-.book {
+.intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: url(asset/wave.png) no-repeat #fff;
+  background-position: 0 50%;
+  background-size: contain cover;
+  perspective: 200px;
+}
 
+.intro img {
+  margin: 5% 0 0 15%;
+  max-height: 440px;
+  width: auto;
+  animation: slide 3s infinite linear;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(10px) scale(0.9);
+  }
+  to {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.book {
     display: flex;
     background: whitesmoke;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -41,7 +70,6 @@ body {
 
 
 .book button {
-
     border:none;
     flex:1;
     color: white;
@@ -51,8 +79,8 @@ body {
     margin-right:1%;
 }
 .status-button {
-
-    background: mediumseagreen !important;}
+    background: mediumseagreen !important;
+  }
 .addBookWrap {
   text-align: center;
 }
@@ -150,5 +178,10 @@ label {
     height: 85%;
     align-items: flex-start;
     padding-left: 75px;
+  }
+
+  .book {
+    display: flex;
+    flex-direction: column;
   }
 }
