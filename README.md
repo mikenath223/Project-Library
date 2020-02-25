@@ -76,13 +76,13 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/mikenath223/Project-Building-Facebook.svg?style=flat-square
-[contributors-url]: https://github.com/mikenath223/Project-Building-Facebook/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/mikenath223/Project-Building-Facebook
-[forks-url]: https://github.com/mikenath223/Project-Building-Facebook/network/members
-[stars-shield]: https://img.shields.io/github/stars/mikenath223/Project-Building-Facebook
-[stars-url]: https://github.com/mikenath223/Project-Building-Facebook/stargazers
-[issues-shield]: https://img.shields.io/github/issues/mikenath223/Project-Building-Facebook
-[issues-url]: https://github.com/mikenath223/Project-Building-Facebook/issues
-[license-shield]: https://img.shields.io/github/license/mikenath223/Project-Building-Facebook
-[license-url]: https://github.com/mikenath223/Project-Building-Facebook/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/mikenath223/Project-Library.svg?style=flat-square
+[contributors-url]: https://github.com/mikenath223/Project-Library/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/mikenath223/Project-Library
+[forks-url]: https://github.com/mikenath223/Project-Library/network/members
+[stars-shield]: https://img.shields.io/github/stars/mikenath223/Project-Library
+[stars-url]: https://github.com/mikenath223/Project-Library/stargazers
+[issues-shield]: https://img.shields.io/github/issues/mikenath223/Project-Library
+[issues-url]: https://github.com/mikenath223/Project-Library/issues
+[license-shield]: https://img.shields.io/github/license/mikenath223/Project-Library
+[license-url]: https://github.com/mikenath223/Project-Library/blob/master/LICENSE.txt
