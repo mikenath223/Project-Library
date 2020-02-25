@@ -1,15 +1,14 @@
-
-const myLibrary = [];
 const selectQuery = query => document.querySelector(query);
 const createElement = elem => document.createElement(elem);
 const appendChild = (parent, child) => parent.appendChild(child);
 
-const getLibrary = selectQuery('.my-books');
+const getLibrary = selectQuery(".my-books");
 
 function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.read = "Book uncompleted 😒";
   this.readToggle = stats => {
     this.read = stats;
   };
@@ -20,119 +19,165 @@ function storageAvailable(type) {
   let storage;
   try {
     storage = window[type];
-    const x = '__storage_test__';
+    const x = "__storage_test__";
     storage.setItem(x, x);
     storage.removeItem(x);
     return true;
   } catch (e) {
     return (
-      e instanceof DOMException
+      e instanceof DOMException &&
       // everything except Firefox
-      && (e.code === 22
+      (e.code === 22 ||
         // Firefox
-        || e.code === 1014
+        e.code === 1014 ||
         // test name field too, because code might not be present
         // everything except Firefox
-        || e.name === 'QuotaExceededError'
+        e.name === "QuotaExceededError" ||
         // Firefox
-        || e.name === 'NS_ERROR_DOM_QUOTA_REACHED')
+        e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
       // acknowledge QuotaExceededError only if there's something already stored
-      && storage
-      && storage.length !== 0
+      storage &&
+      storage.length !== 0
     );
   }
 }
 
 function saveLibrary(library) {
-  if (storageAvailable('localStorage')) {
+  if (storageAvailable("localStorage")) {
     const libObjs = { array: [] };
-    if (localStorage.getItem('library') != null) {
-      const lib = JSON.parse(localStorage.getItem('library')); // { book1:  }
+    if (localStorage.getItem("library") != null) {
+      const lib = JSON.parse(localStorage.getItem("library")); // { book1:  }
       lib.array.push(library);
-      localStorage.setItem('library', JSON.stringify(lib));
+      localStorage.setItem("library", JSON.stringify(lib));
     } else {
-      libObjs.array.push(JSON.stringify(library));
-      localStorage.setItem('library', JSON.stringify(libObjs));
+      libObjs.array.push(library);
+      localStorage.setItem("library", JSON.stringify(libObjs));
     }
   }
 }
 
 function retrieveLibrary() {
-  if (storageAvailable('localStorage')) {
-    const savedLibrary = JSON.parse(localStorage.getItem('library'));
+  if (storageAvailable("localStorage")) {
+    const savedLibrary = JSON.parse(localStorage.getItem("library"));
     return savedLibrary;
   }
   return false;
 }
 
-const removeBooks = elem => {
-  elem.addEventListener('click', e => {
-    const bookIndex = e.target.dataset.index;
-    delete myLibrary[bookIndex];
-    const book = selectQuery(`div[data-index="book${bookIndex}"]`);
-    document.querySelector('.my-books').removeChild(book);
-  });
-};
-
-function render() {
-  const len = myLibrary.length;
-  const parents = createElement('div');
-  const element = createElement('h1');
-  const button = createElement('button');
-  const readButton = createElement('button');
-  const readElem = createElement('h3');
-  readElem.classList.add('read-status');
-  readButton.innerHTML = 'Toggle Read Status';
-  readButton.classList.add('.status-button');
-  button.innerHTML = 'Remove';
-  button.setAttribute('type', 'submit');
-  parents.classList.add('book');
-  appendChild(getLibrary, parents);
-  appendChild(parents, element);
-  appendChild(parents, button);
-  appendChild(parents, readButton);
-  appendChild(parents, readElem);
-
-  if (len !== 0) {
-    element.innerHTML = myLibrary[len - 1].info();
-    readButton.dataset.index = len - 1;
-    button.dataset.index = len - 1;
-    parents.dataset.index = `book${len - 1}`;
-  } else if (retrieveLibrary()) {
-    // retrieveLibrary().map((item, ind) => {
-    //   // element.innerHTML = item.map
-    //   readButton.dataset.index = ind;
-    //   button.dataset.index = ind;
-    //   parents.dataset.index = `book${ind}`;
-    // });
-  }
-
-  button.classList.add('removeBook');
-  button.addEventListener('click', removeBooks(button));
-
-  const readStatus = ['Book Completely Read! 😍', 'Book uncompleted 😒'];
-  let chkStatsLen = 0;
-  function updateStatus(e) {
-    const bookIndex = e.target.dataset.index;
-    if (chkStatsLen > 1) {
-      chkStatsLen = 0;
-    }
-    const book = myLibrary[bookIndex];
-    book.readToggle(readStatus[chkStatsLen]);
-    chkStatsLen += 1;
-    const readStats = selectQuery('.read-status');
-    readStats.innerHTML = book.read;
-  }
-
-  readButton.addEventListener('click', updateStatus);
+function removeBooks(e) {
+  const bookIndex = +e.target.dataset.index;
+  const newLibrary = {};
+  const lib = retrieveLibrary().array;
+  newLibrary.array = lib.filter((item, ind) => ind !== bookIndex);
+  localStorage.setItem("library", JSON.stringify(newLibrary));
+  const book = selectQuery(`div[data-index="book${bookIndex}"]`);
+  document.querySelector(".my-books").removeChild(book);
 }
 
-const submitBut = document.getElementById('submit');
-document.getElementById('form').onsubmit = e => e.preventDefault();
-submitBut.addEventListener('click', () => {
-  const title = selectQuery('#title');
-  const author = selectQuery('#author');
-  const pages = selectQuery('#pages');
+const readStatus = ["Book Completely Read! 😍", "Book uncompleted 😒"];
+let chkStatsLen = 0;
+function updateStatus(e) {
+  const bookIndex = +e.target.dataset.index;
+  console.log(bookIndex);
+  
+  if (chkStatsLen > 1) {
+    chkStatsLen = 0;
+  }
+  const newLibrary = { array: [] };
+  const lib = retrieveLibrary().array;
+  lib.forEach((item, ind) => {
+    if (ind == bookIndex) {
+      item.read = readStatus[chkStatsLen];
+    }
+    newLibrary.array.push(item);
+  });
+  localStorage.setItem("library", JSON.stringify(newLibrary));
+  const bookRead = selectQuery(`h3[data-index="read${bookIndex}"]`);
+  
+  bookRead.innerText = "Read Status " + readStatus[chkStatsLen];
+  chkStatsLen += 1;
+}
+
+function render() {
+  if (retrieveLibrary()) {
+    const parents = createElement("div");
+    const element = createElement("h1");
+    const button = createElement("button");
+    const readButton = createElement("button");
+    const readElem = createElement("h3");
+    readElem.classList.add("read-status");
+    readButton.innerHTML = "Toggle Read Status";
+    readButton.classList.add("status-button");
+    button.innerHTML = "Remove";
+    button.setAttribute("type", "submit");
+    parents.classList.add("book");
+    appendChild(getLibrary, parents);
+    appendChild(parents, element);
+    appendChild(parents, button);
+    appendChild(parents, readButton);
+    appendChild(parents, readElem);
+
+    button.classList.add("removeBook");
+    button.addEventListener("click", removeBooks);
+
+    readButton.addEventListener("click", updateStatus);
+
+    const libraryLength = retrieveLibrary().array.length;
+    const library = retrieveLibrary().array[libraryLength - 1];
+    element.innerHTML = `Book Title: ${library.title}, Author: ${library.author}, Pages: ${library.pages}`;
+    readElem.innerHTML = `Read Status: ${library.read}`;
+    readElem.dataset.index = `read${libraryLength - 1}`;
+    readButton.dataset.index = libraryLength - 1;
+    button.dataset.index = libraryLength - 1;
+    parents.dataset.index = `book${libraryLength - 1}`;
+  }
+}
+
+function appendStorage() {
+  if (retrieveLibrary() !== null) {
+    const item = retrieveLibrary().array;
+    const libraryLength = retrieveLibrary().array.length;
+
+    for (let i = 0; i < libraryLength; i++) {
+      const parents = createElement("div");
+      const element = createElement("h1");
+      const button = createElement("button");
+      const readButton = createElement("button");
+      const readElem = createElement("h3");
+      readElem.classList.add("read-status");
+      readButton.innerHTML = "Toggle Read Status";
+      readButton.classList.add("status-button");
+      button.innerHTML = "Remove";
+      button.setAttribute("type", "submit");
+      parents.classList.add("book");
+      appendChild(getLibrary, parents);
+      appendChild(parents, element);
+      appendChild(parents, readElem);
+      appendChild(parents, button);
+      appendChild(parents, readButton);
+
+      button.classList.add("removeBook");
+      button.addEventListener("click", removeBooks);
+
+      readButton.addEventListener("click", updateStatus);
+
+      element.innerHTML = `Book Title: ${item[i].title}, Author: ${item[i].author}, Pages: ${item[i].pages}`;
+      readElem.innerHTML = `Read Status: ${item[i].read}`;
+      readElem.dataset.index = `read${i}`;
+      readButton.dataset.index = i;
+      button.dataset.index = i;
+      parents.dataset.index = `book${i}`;
+    }
+  }
+}
+appendStorage();
+
+const submitBut = document.getElementById("submit");
+document.getElementById("form").onsubmit = e => e.preventDefault();
+submitBut.addEventListener("click", () => {
+  const title = selectQuery("#title");
+  const author = selectQuery("#author");
+  const pages = selectQuery("#pages");
 
   const checkLen = inputVal => {
     if (inputVal.length >= 1) {
@@ -142,22 +187,25 @@ submitBut.addEventListener('click', () => {
   };
 
   if (
-    checkLen(title.value)
-    && checkLen(author.value)
-    && checkLen(pages.value)
+    checkLen(title.value) &&
+    checkLen(author.value) &&
+    checkLen(pages.value)
   ) {
     const newBook = new Book(title.value, author.value, pages.value);
-    myLibrary.push(newBook);
     saveLibrary(newBook);
     render();
-    title.value = '';
-    author.value = '';
-    pages.value = '';
+    title.value = "";
+    author.value = "";
+    pages.value = "";
   }
 });
 
-const createBookButton = selectQuery('.createBookButton');
-const addBookForm = selectQuery('.createBookForm');
-createBookButton.addEventListener('click', () => {
-  addBookForm.classList.toggle('displayForm');
+const createBookButton = selectQuery(".createBookButton");
+const addBookForm = selectQuery(".createBookForm");
+createBookButton.addEventListener("click", () => {
+  addBookForm.classList.toggle("displayForm");
 });
+
+window.onload = () => {
+  getLibrary.scrollTo(0, getLibrary.scrollHeight);
+};
