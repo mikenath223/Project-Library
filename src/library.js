@@ -98,7 +98,7 @@ function updateStatus(e) {
   localStorage.setItem('library', JSON.stringify(newLibrary));
   const bookRead = selectQuery(`h3[data-index="read${bookIndex}"]`);
 
-  bookRead.innerText = `<br/> Read Status ${readStatus[chkStatsLen]}`;
+  bookRead.innerText = `Status: ${readStatus[chkStatsLen]}`;
   chkStatsLen += 1;
 }
 
