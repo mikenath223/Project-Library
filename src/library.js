@@ -104,7 +104,7 @@ function createElems() {
   const readButton = createElement('button');
   const readElem = createElement('h3');
   readElem.classList.add('read-status');
-  readButton.innerHTML = 'Toggle Read Status';
+  readButton.innerHTML = 'Read?';
   readButton.classList.add('status-button');
   button.innerHTML = 'Remove';
   button.setAttribute('type', 'submit');

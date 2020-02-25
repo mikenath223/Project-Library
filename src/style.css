@@ -29,9 +29,34 @@ body {
   background: url(../src/asset/clip-education.png) center no-repeat;
 }
 
+.book {
+
+    display: flex;
+    background: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 2%;
+    align-items:center;
+
+}
+
+
+.book button {
+
+    border:none;
+    flex:1;
+    color: white;
+    background:coral;
+    align-self:center;
+    padding:15px;
+    margin-right:1%;
+}
+.status-button {
+
+    background: mediumseagreen !important;}
 .addBookWrap {
   text-align: center;
 }
+
 
 .createBookButton {
   background: #083232d0;
