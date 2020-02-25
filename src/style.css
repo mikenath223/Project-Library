@@ -1,0 +1,245 @@
+html {
+  width: 100vw;
+}
+
+body {
+  height: max-content;
+  width: 100%;
+}
+
+.shelf {
+  position: relative;
+  width: 95%;
+  height: 90%;
+  background-color: rgba(255, 255, 255, 0.582);
+  margin: 20px auto;
+}
+
+.shelf::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  z-index: -1;
+  background: url(../src/asset/clip-education.png) center no-repeat;
+}
+
+.intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: url(asset/wave.png) no-repeat #fff;
+  background-position: 0 50%;
+  background-size: contain cover;
+  perspective: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: transform 3s;
+}
+
+.intro img {
+  margin-left: 15%;
+  max-height: 440px;
+  width: auto;
+  animation: slide 3s infinite linear;
+}
+
+.intro h2 {
+  padding: 20px;
+  font-size: 25px;
+  font-family: cursive;
+  color: rgb(255, 0, 55);
+  background-color: rgba(153, 184, 16, 0.2);
+  text-align: center;
+  border-radius: 5px;
+}
+
+.greet {
+  border: 2px solid silver;
+  border-radius: 10px;
+  padding: 10px;
+  width: 350px;
+  margin-top: -200px;
+  text-align: center;
+}
+
+.greet > button {
+  margin-top: 40px;
+  width: 80%;
+  height: 60px;
+  border: none;
+  background-color: rgba(255, 0, 0, 0.596);
+  font-size: 25px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.greet p {
+  margin-top: 30px;
+  font-family: cursive;
+  font-style: italic;
+  font-size: 25px;
+}
+
+
+@keyframes slide {
+  from {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(10px) scale(0.9);
+  }
+  to {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.book {
+    display: flex;
+    background: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 2%;
+    align-items:center;
+
+}
+
+
+.book button {
+    border:none;
+    flex:1;
+    color: white;
+    background:coral;
+    align-self:center;
+    padding:15px;
+    margin-right:1%;
+}
+.status-button {
+    background: mediumseagreen !important;
+  }
+.addBookWrap {
+  text-align: center;
+}
+
+
+.createBookButton {
+  background: #083232d0;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 25px;
+  padding: 5px 10px;
+}
+
+.createBookForm {
+  display: none;
+}
+
+.displayForm {
+  position: absolute;
+  top: 60px;
+  left: 10%;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 3px solid silver;
+  padding: 10px;
+  margin: auto;
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.form-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+label {
+  margin-top: 5px;
+}
+
+.info {
+  text-align: center;
+}
+
+.info p {
+  margin: 0;
+}
+
+.addBookBut {
+  background: #083232d0;
+  color: #fff;
+  font-size: 17px;
+  border: 4px solid green;
+  border: none;
+  padding: 2px 10px;
+  border-radius: 5px;
+}
+
+.displayForm::before {
+  content: "";
+  position: absolute;
+  top: -42px;
+  left: 48%;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent transparent gray transparent;
+}
+
+.my-books {
+  width: 90%;
+  margin: 110px auto 10px auto;
+  border: 3px solid silver;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 900px) {
+  .displayForm {
+    flex-flow: column nowrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+    height: 300px;
+    width: 50%;
+    left: 23%;
+  }
+
+  .form-content {
+    text-align: left;
+    flex-flow: column nowrap;
+    align-content: space-around;
+    height: 85%;
+    align-items: flex-start;
+    padding-left: 5px;
+  }
+
+  .book {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .intro {background: url(asset/wave.png) no-repeat #fff;}
+  .intro img {display:none;}
+  .greet { background:whitesmoke;}
+}
+
+@media only screen and (max-width: 430px) {
+
+  .intro {
+    background: url(asset/wave.png) no-repeat #fff;
+    width: 100%;
+    height: 120%;
+  }
+  .intro img {display:none;}
+  .greet { background:whitesmoke;}
+
+}

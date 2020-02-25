@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="src/Normalize.css">
+  <title>Project: Library</title>
+</head>
+
+<body>
+  <section class="intro">
+    <img src="/src/asset/bg.svg" alt="float">
+    <div class="greet">
+       <h2>The Library </h2>
+       <p>Create and store books and come back to them anytime. Happy Reading...</p>
+       <button class="enter">Enter Library...</button> 
+    </div> 
+  </section>
+  <section class="shelf">
+    <div class="addBookWrap"><button type="submit" class="createBookButton">Add Book</button>
+      <form action="" method="post" id="form" class="createBookForm">
+        <div class="info">
+          <p>Create a new Book </p> <br>
+        </div>
+        <div class="form-content">
+        <label for="title"> Title: </label>
+        <input type="text" name="title" id="title" required>
+        <label for="author"> Author: </label>
+        <input type="text" name="author" id="author" class="field" required>
+        <label for="pages"> Pages: </label>
+        <input type="number" name="pages" id="pages" pattern="[^\-]+" min="1" onpaste="return false" on class="field"
+          required>
+        <button type="submit" id="submit" class="addBookBut">Add book to library</button>
+      </div>
+      </form>
+    </div>
+    <div class="my-books"> </div>
+  </section>
+
+  <script src="src/library.js"> </script>
+</body>
+
+</html>
