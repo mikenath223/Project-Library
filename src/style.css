@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  height: 95%;
+  height: max-content;
   width: 100%;
 }
 
@@ -88,9 +88,6 @@ body {
   font-size: 25px;
 }
 
-.greet {
-  align-self: ;
-}
 
 @keyframes slide {
   from {
@@ -236,12 +233,12 @@ label {
 }
 
 @media only screen and (max-width: 430px) {
-  body {
-    width: 430px;
-    height: 500px;
-  }
 
-  .intro {background: url(asset/wave.png) no-repeat #fff;}
+  .intro {
+    background: url(asset/wave.png) no-repeat #fff;
+    width: 100%;
+    height: 120%;
+  }
   .intro img {display:none;}
   .greet { background:whitesmoke;}
 
