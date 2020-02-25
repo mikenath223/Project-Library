@@ -17,7 +17,7 @@
   </h3>
 
   <h3 align="center">
-	 Live Version link - https://raw.githack.com/mikenath223/Project-Library/index.html
+	 Live Version link - https://mikenath223.github.io/Project-Library/
   </h3>
 
   <p align="center">
