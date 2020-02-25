@@ -5,9 +5,9 @@ const appendChild = (parent, child) => parent.appendChild(child);
 const getLibrary = selectQuery('.my-books');
 const enterLib = selectQuery('.enter');
 enterLib.onclick = () => {
-  const intro = selectQuery('.intro')
-  intro.setAttribute('style', "transform: translateX(-1500px)")
-}
+  const intro = selectQuery('.intro');
+  intro.setAttribute('style', 'transform: translateX(-1500px)');
+};
 
 function Book(title, author, pages) {
   this.title = title;
@@ -123,7 +123,11 @@ function createElems() {
   button.addEventListener('click', removeBooks);
   readButton.addEventListener('click', updateStatus);
   return {
-    element, readElem, readButton, button, parents,
+    element,
+    readElem,
+    readButton,
+    button,
+    parents,
   };
 }
 
