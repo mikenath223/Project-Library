@@ -55,9 +55,9 @@ This project was built with these techologies:
 
 **Michgolden Ukeje**
 
-- Github: [@t](https://github.com/mikenath223)
-- Twitter: [@](https://twitter.com/)
-- Linkedin: [](https://www.linkedin.com/in/)
+- Github: [@mikenath223](https://github.com/mikenath223)
+- Twitter: [@Michgolden_Nath](https://twitter.com/Michgolden_Nath)
+- Linkedin: [Ukeje Michgolden](https://https://www.linkedin.com/in/michgoldenukeje/)
 <br />
 <br />
 
