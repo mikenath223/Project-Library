@@ -3,6 +3,11 @@ const createElement = elem => document.createElement(elem);
 const appendChild = (parent, child) => parent.appendChild(child);
 
 const getLibrary = selectQuery('.my-books');
+const enterLib = selectQuery('.enter');
+enterLib.onclick = () => {
+  const intro = selectQuery('.intro')
+  intro.setAttribute('style', "transform: translateX(-1500px)")
+}
 
 function Book(title, author, pages) {
   this.title = title;
@@ -93,7 +98,7 @@ function updateStatus(e) {
   localStorage.setItem('library', JSON.stringify(newLibrary));
   const bookRead = selectQuery(`h3[data-index="read${bookIndex}"]`);
 
-  bookRead.innerText = `Read Status ${readStatus[chkStatsLen]}`;
+  bookRead.innerText = `<br/> Read Status ${readStatus[chkStatsLen]}`;
   chkStatsLen += 1;
 }
 
@@ -130,7 +135,7 @@ function render() {
 
     const libraryLength = retrieveLibrary().array.length;
     const library = retrieveLibrary().array[libraryLength - 1];
-    element.innerHTML = `Book Title: ${library.title}, Author: ${library.author}, Pages: ${library.pages}`;
+    element.innerHTML = `Book Title: ${library.title}, Author: ${library.author}, Pages: ${library.pages} <br/>`;
     readElem.innerHTML = `Read Status: ${library.read}`;
     readElem.dataset.index = `read${libraryLength - 1}`;
     readButton.dataset.index = libraryLength - 1;
@@ -149,7 +154,7 @@ function appendStorage() {
         element, readElem, readButton, button, parents,
       } = createElems();
 
-      element.innerHTML = `Book Title: ${item[i].title}, Author: ${item[i].author}, Pages: ${item[i].pages}`;
+      element.innerHTML = `Book Title: ${item[i].title}, Author: ${item[i].author}, Pages: ${item[i].pages} <br/>`;
       readElem.innerHTML = `Read Status: ${item[i].read}`;
       readElem.dataset.index = `read${i}`;
       readButton.dataset.index = i;

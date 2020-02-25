@@ -4,7 +4,7 @@ html {
 
 body {
   height: 95%;
-  width: 95%;
+  width: 100%;
 }
 
 .shelf {
@@ -38,13 +38,58 @@ body {
   background-position: 0 50%;
   background-size: contain cover;
   perspective: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: transform 3s;
 }
 
 .intro img {
-  margin: 5% 0 0 15%;
+  margin-left: 15%;
   max-height: 440px;
   width: auto;
   animation: slide 3s infinite linear;
+}
+
+.intro h2 {
+  padding: 20px;
+  font-size: 25px;
+  font-family: cursive;
+  color: rgb(255, 0, 55);
+  background-color: rgba(153, 184, 16, 0.2);
+  text-align: center;
+  border-radius: 5px;
+}
+
+.greet {
+  border: 2px solid silver;
+  border-radius: 10px;
+  padding: 10px;
+  width: 350px;
+  margin-top: -200px;
+  text-align: center;
+}
+
+.greet > button {
+  margin-top: 40px;
+  width: 80%;
+  height: 60px;
+  border: none;
+  background-color: rgba(255, 0, 0, 0.596);
+  font-size: 25px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.greet p {
+  margin-top: 30px;
+  font-family: cursive;
+  font-style: italic;
+  font-size: 25px;
+}
+
+.greet {
+  align-self: ;
 }
 
 @keyframes slide {
@@ -168,7 +213,7 @@ label {
     justify-content: space-evenly;
     height: 300px;
     width: 50%;
-    left: 25%;
+    left: 23%;
   }
 
   .form-content {
@@ -177,11 +222,22 @@ label {
     align-content: space-around;
     height: 85%;
     align-items: flex-start;
-    padding-left: 75px;
+    padding-left: 5px;
   }
 
   .book {
     display: flex;
     flex-direction: column;
   }
+}
+
+@media only screen and (max-width: 430px) {
+  body {
+    width: 430px;
+    height: 500px;
+  }
+ .intro {
+   width: 430px;
+   height: 500px;
+ } 
 }
