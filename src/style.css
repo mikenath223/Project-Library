@@ -7,6 +7,17 @@ body {
   width: 100%;
 }
 
+noscript {
+  position: fixed;
+  top: 0;
+  background-color: red;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 23px;
+  animation: slide 3s infinite linear;
+}
+
 .shelf {
   position: relative;
   width: 95%;
