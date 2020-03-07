@@ -1,10 +1,5 @@
-html {
-  width: 100vw;
-}
-
 body {
-  height: max-content;
-  width: 100%;
+  min-height: 100vh;
 }
 
 noscript {
@@ -81,7 +76,7 @@ noscript {
   text-align: center;
 }
 
-.greet > button {
+.greet>button {
   margin-top: 40px;
   width: 80%;
   height: 60px;
@@ -99,7 +94,6 @@ noscript {
   font-size: 25px;
 }
 
-
 @keyframes slide {
   from {
     transform: translateY(0px) scale(1);
@@ -113,31 +107,56 @@ noscript {
 }
 
 .book {
-    display: flex;
-    background: whitesmoke;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 2%;
-    align-items:center;
-
-}
-
-
-.book button {
-    border:none;
-    flex:1;
-    color: white;
-    background:coral;
-    align-self:center;
-    padding:15px;
-    margin-right:1%;
-}
-.status-button {
-    background: mediumseagreen !important;
-  }
-.addBookWrap {
+  display: grid;
+  grid-template: 1fr/ 2fr 5fr;
+  background: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  font-size: 22px;
+  background-color: rgb(20, 2, 43);
+  color: #fff;
+  margin-bottom: 20px;
   text-align: center;
 }
 
+.book *:not(.book>img) {
+  display: inline-block;
+  margin-bottom: 15px;
+  justify-self: center;
+}
+
+.book>h1 {
+  max-width: 70%;
+}
+
+.book>h3,
+.book>h4 {
+  grid-column: 2 /2;
+}
+
+.book > img {
+  height: 200px;
+}
+
+.book button {
+  border: none;
+  flex: 1;
+  color: white;
+  background: coral;
+  align-self: center;
+  padding: 15px;
+  margin-right: 1%;
+  width: 200px;
+}
+
+.book .status-button {
+  grid-column: 2/2;
+  background: mediumseagreen;
+}
+
+.addBookWrap {
+  text-align: center;
+}
 
 .createBookButton {
   background: #083232d0;
@@ -199,7 +218,6 @@ label {
 
 .addBookBut {
   background: #083232d0;
-  color: #fff;
   font-size: 17px;
   border: 4px solid green;
   border: none;
@@ -221,9 +239,9 @@ label {
 
 .my-books {
   width: 90%;
-  margin: 110px auto 10px auto;
+  margin: 90px auto 10px auto;
   border: 3px solid silver;
-  height: 500px;
+  height: 80vh;
   overflow-y: scroll;
 }
 
@@ -236,7 +254,6 @@ label {
     width: 50%;
     left: 23%;
   }
-
   .form-content {
     text-align: left;
     flex-flow: column nowrap;
@@ -245,25 +262,31 @@ label {
     align-items: flex-start;
     padding-left: 5px;
   }
-
   .book {
     display: flex;
     flex-direction: column;
   }
-
-  .intro {background: url(asset/wave.png) no-repeat #fff;}
-  .intro img {display:none;}
-  .greet { background:whitesmoke;}
+  .intro {
+    background: url(asset/wave.png) no-repeat #fff;
+  }
+  .intro img {
+    display: none;
+  }
+  .greet {
+    background: whitesmoke;
+  }
 }
 
 @media only screen and (max-width: 430px) {
-
   .intro {
     background: url(asset/wave.png) no-repeat #fff;
     width: 100%;
     height: 120%;
   }
-  .intro img {display:none;}
-  .greet { background:whitesmoke;}
-
+  .intro img {
+    display: none;
+  }
+  .greet {
+    background: whitesmoke;
+  }
 }

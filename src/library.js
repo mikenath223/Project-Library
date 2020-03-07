@@ -107,6 +107,9 @@ function createElems() {
   const element = createElement("h1");
   const authElem = createElement("h3");
   const pageElem = createElement("h4");
+  const bookIcon = createElement('img');
+  bookIcon.setAttribute('src', '../src/asset/book.png');
+  bookIcon.setAttribute('alt', 'book-icon')
   const button = createElement("button");
   const readButton = createElement("button");
   const readElem = createElement("h3");
@@ -117,6 +120,7 @@ function createElems() {
   button.setAttribute("type", "submit");
   parents.classList.add("book");
   appendChild(getLibrary, parents);
+  appendChild(parents, bookIcon);
   appendChild(parents, element);
   appendChild(parents, authElem);
   appendChild(parents, pageElem);
