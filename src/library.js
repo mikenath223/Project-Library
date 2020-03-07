@@ -118,6 +118,8 @@ function createElems() {
   parents.classList.add("book");
   appendChild(getLibrary, parents);
   appendChild(parents, element);
+  appendChild(parents, authElem);
+  appendChild(parents, pageElem);
   appendChild(parents, readElem);
   appendChild(parents, button);
   appendChild(parents, readButton);
@@ -135,6 +137,27 @@ function createElems() {
   };
 }
 
+function renderInner(
+  element,
+  authElem,
+  pageElem,
+  readElem,
+  readButton,
+  button,
+  parents,
+  library,
+  libraryLength
+) {
+  element.innerHTML = `Book Title: ${library.title}`;
+  authElem.innerHTML = `Author: ${library.author}`;
+  pageElem.innerHTML = `Pages: ${library.pages}`;
+  readElem.innerHTML = `Read Status: ${library.read}`;
+  readElem.dataset.index = `read${libraryLength - 1}`;
+  readButton.dataset.index = libraryLength - 1;
+  button.dataset.index = libraryLength - 1;
+  parents.dataset.index = `book${libraryLength - 1}`;
+}
+
 function render() {
   if (retrieveLibrary()) {
     const {
@@ -149,19 +172,18 @@ function render() {
 
     const libraryLength = retrieveLibrary().array.length;
     const library = retrieveLibrary().array[libraryLength - 1];
-    renderInner(element, authElem, pageElem, readElem, readButton, button, parents, library, libraryLength);
+    renderInner(
+      element,
+      authElem,
+      pageElem,
+      readElem,
+      readButton,
+      button,
+      parents,
+      library,
+      libraryLength
+    );
   }
-}
-
-function renderInner(element, authElem, pageElem, readElem, readButton, button, parents, library, libraryLength) {
-  element.innerHTML = `Book Title: ${library.title}`;
-  authElem.innerHTML = `Author: ${library.author}`;
-  pageElem.innerHTML = `Pages: ${library.pages}`;
-  readElem.innerHTML = `Read Status: ${library.read}`;
-  readElem.dataset.index = `read${libraryLength - 1}`;
-  readButton.dataset.index = libraryLength - 1;
-  button.dataset.index = libraryLength - 1;
-  parents.dataset.index = `book${libraryLength - 1}`;
 }
 
 function appendStorage() {
@@ -180,7 +202,17 @@ function appendStorage() {
         parents
       } = createElems();
 
-      renderInner(element, authElem, pageElem, readElem, readButton, button, parents, item[i], i);
+      renderInner(
+        element,
+        authElem,
+        pageElem,
+        readElem,
+        readButton,
+        button,
+        parents,
+        item[i],
+        i
+      );
     }
   }
 }
