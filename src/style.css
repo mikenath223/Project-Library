@@ -67,6 +67,15 @@ noscript {
   border-radius: 5px;
 }
 
+.field:invalid {
+  border-color: red;
+  background-color: gainsboro;
+}
+
+.field:focus:invalid {
+  outline: none;
+}
+
 .greet {
   border: 2px solid silver;
   border-radius: 10px;
@@ -108,11 +117,11 @@ noscript {
 
 .book {
   display: grid;
-  grid-template: 1fr/ 2fr 5fr;
+  grid-template: 1fr/ 1fr 5fr;
   background: whitesmoke;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 20px;
-  font-size: 22px;
+  font-size: 17px;
   background-color: rgb(20, 2, 43);
   color: #fff;
   margin-bottom: 20px;
@@ -126,16 +135,19 @@ noscript {
 }
 
 .book>h1 {
+  text-align: left;
+  font-size: 16px;
   max-width: 70%;
 }
 
-.book>h3,
-.book>h4 {
+.book>h3, .book>h4 {
+  font-size: 16px;
   grid-column: 2 /2;
 }
 
-.book > img {
-  height: 200px;
+.book>img {
+  height: 50px;
+  max-width: auto;
 }
 
 .book button {
@@ -163,7 +175,7 @@ noscript {
   color: #fff;
   border: none;
   border-radius: 10px;
-  font-size: 25px;
+  font-size: 20px;
   padding: 5px 10px;
 }
 
@@ -174,14 +186,16 @@ noscript {
 .displayForm {
   position: absolute;
   top: 60px;
-  left: 10%;
+  left: 18%;
   background-color: #fff;
   border-radius: 10px;
   border: 3px solid silver;
   padding: 10px;
   margin: auto;
   display: flex;
-  width: 80%;
+  color: #fff;
+  max-width: 1500px;
+  min-width: 300px;
   flex-direction: column;
   text-align: left;
   justify-content: space-between;
@@ -191,8 +205,16 @@ noscript {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: min-content;
+  max-width: 1900px;
   margin: auto;
+}
+
+.form-content * {
+  margin: 5px;
+}
+
+.form-content input {
+  margin-right: 15px;
 }
 
 label {
@@ -207,8 +229,8 @@ label {
   background-color: darkcyan;
   border-radius: 10px;
   color: #fff;
-  padding-top: 5%;
-  font-size: 1.2em;
+  padding-top: 3%;
+  font-size: 1.5em;
   text-align: center;
 }
 
@@ -242,7 +264,7 @@ label {
   margin: 90px auto 10px auto;
   border: 3px solid silver;
   height: 80vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 @media only screen and (max-width: 900px) {
@@ -252,19 +274,24 @@ label {
     justify-content: space-evenly;
     height: 300px;
     width: 50%;
-    left: 23%;
+    left: 16%;
   }
   .form-content {
     text-align: left;
     flex-flow: column nowrap;
     align-content: space-around;
-    height: 85%;
+    height: 900px;
     align-items: flex-start;
     padding-left: 5px;
   }
+  .createBookForm {
+    height: 320px;
+  }
   .book {
-    display: flex;
-    flex-direction: column;
+    height: 250px;
+  }
+  .book>h3, .book>h4 {
+    font-size: 13px;
   }
   .intro {
     background: url(asset/wave.png) no-repeat #fff;
