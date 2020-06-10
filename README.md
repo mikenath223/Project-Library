@@ -17,7 +17,7 @@
   </h3>
 
   <h3 align="center">
-	 Live Version link - https://mikenath223.github.io/Project-Library/
+	 Live Version link - https://libraryjs.netlify.app/
   </h3>
 
   <p align="center">
