@@ -55,17 +55,17 @@ This project was built with these techologies:
 
 **Michgolden Ukeje**
 
-- Github: [@mikenath223](https://github.com/mikenath223)
+- GitHub: [@mikenath223](https://github.com/mikenath223)
 - Twitter: [@Michgolden_Nath](https://twitter.com/MichgoldenU)
-- Linkedin: [Ukeje Michgolden](https://https://www.linkedin.com/in/michgoldenukeje/)
+- LinkedIn: [Ukeje Michgolden](https://https://www.linkedin.com/in/michgoldenukeje/)
 <br />
 <br />
 
 **Alejandro Andres**
 
-- Github: [@alexawesomecode](https://github.com/alexawesomecode)
+- GitHub: [@alexawesomecode](https://github.com/alexawesomecode)
 - Twitter: [@alexcode0](https://twitter.com/alexcode0)
-- Linkedin: [Alejandro Andres](https://www.linkedin.com/in/alejandro-andres-126592191/)
+- LinkedIn: [Alejandro Andres](https://www.linkedin.com/in/alejandro-andres-126592191/)
 
 # License
 
