@@ -186,7 +186,7 @@ noscript {
 .displayForm {
   position: absolute;
   top: 60px;
-  left: 18%;
+  left: 12%;
   background-color: #fff;
   border-radius: 10px;
   border: 3px solid silver;
@@ -215,6 +215,7 @@ noscript {
 
 .form-content input {
   margin-right: 15px;
+  padding: 5px;
 }
 
 label {
@@ -247,16 +248,6 @@ label {
   border-radius: 5px;
   margin-top: 10px;
   align-self: center;
-}
-
-.displayForm::before {
-  content: "";
-  position: absolute;
-  top: -42px;
-  left: 48%;
-  border-width: 20px;
-  border-style: solid;
-  border-color: transparent transparent gray transparent;
 }
 
 .my-books {
