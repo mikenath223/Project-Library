@@ -37,7 +37,7 @@ This is a Library App where you can display, add and remove your books. You can 
 
 # Validations
 
--ESLINT
+- ESLint
 
 # Get Started
 
@@ -47,9 +47,9 @@ Download or clone this [repo here](https://github.com/mikenath223/Project-Librar
 
 This project was built with these techologies:
 
-* JAVASCRIPT
+* JavaScript
 * HTML
-* CSS3
+* CSS
 
 # Authors
 
